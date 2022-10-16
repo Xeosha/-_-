@@ -53,13 +53,13 @@ int determinant(int matr[n][n]) {
 int dets(int column) {
 	//замена столбца
 	for (int i = 0; i < n; ++i) {
-		temp_matrix[i][column-1] = matrix[i][m-1];
+		temp_matrix[i][column - 1] = matrix[i][m - 1];
 	}
 	//находим определитель с замененным столбцом
 	int det = determinant(temp_matrix);
 	//обратная замена
 	for (int i = 0; i < n; ++i) {
-		temp_matrix[i][column-1] = matrix[i][column-1];
+		temp_matrix[i][column - 1] = matrix[i][column - 1];
 	}
 	return det;
 
@@ -74,7 +74,6 @@ int main() {
 
 	int det_main = determinant(temp_matrix);
 	cout << "Гл опр: " << det_main << endl;
-	cout << "det_main != 0 => Система имеет решения" << endl;
 
 
 	int det1, det2, det3;
@@ -84,13 +83,11 @@ int main() {
 	det3 = dets(3);
 	cout << "Побочные опр: " << det1 << " " << det2 << " " << det3 << endl;
 
-
-
-
 	if (det_main == 0) {
-		cout << "Нет решений";
+		cout << "Не единственное решение или нет решений.";
 	}
 	else {
+		cout << "det_main != 0 => Система имеет единственное решение" << endl;
 		x1 = det1 / det_main;
 		x2 = det2 / det_main;
 		x3 = det3 / det_main;
