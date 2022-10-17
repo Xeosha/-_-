@@ -69,25 +69,30 @@ int main() {
 	//для установки русского языка в выводе:
 	setlocale(LC_ALL, "Russian");
 
+	//Ввод данных
 	entering_coef();
 	cout << "---------------------------------------------" << endl;
 
+	//главный детерминант матрицы
 	int det_main = determinant(temp_matrix);
 	cout << "Гл опр: " << det_main << endl;
 
-
-	int det1, det2, det3;
-	int x1, x2, x3;
-	det1 = dets(1);
-	det2 = dets(2);
-	det3 = dets(3);
-	cout << "Побочные опр: " << det1 << " " << det2 << " " << det3 << endl;
-
+	//проверка совместности матрицы
 	if (det_main == 0) {
 		cout << "Не единственное решение или нет решений.";
 	}
 	else {
 		cout << "det_main != 0 => Система имеет единственное решение" << endl;
+
+		//нахождение побочных определитель
+		int det1, det2, det3;
+		det1 = dets(1);
+		det2 = dets(2);
+		det3 = dets(3);
+		cout << "Побочные опр: " << det1 << " " << det2 << " " << det3 << endl;
+
+		//корни СЛАУ
+		int x1, x2, x3;
 		x1 = det1 / det_main;
 		x2 = det2 / det_main;
 		x3 = det3 / det_main;
